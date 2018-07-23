@@ -1,0 +1,132 @@
+==== clj / no extra classloader / Java java version "1.8.0_91" ===================================
+clojure -A:pomegranate -i src/cptest/test.clj
+Testing pomegranate
+    add-classpath [31m[FAIL][m
+       Could not find a suitable classloader to modify from clojure.lang.LazySeq@92190edf
+    classpath resource [31m[FAIL][m
+       Cannot open <nil> as a Reader.
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+
+clojure -A:pomegranate-old -i src/cptest/test.clj
+Testing pomegranate
+    add-classpath [32m[OK][m
+    classpath resource [32m[OK][m
+    classpath source file [32m[OK][m
+
+clojure -A:add-lib -i src/cptest/test.clj
+Testing add-lib
+    add-classpath [31m[FAIL][m
+       Context classloader is not a DynamicClassLoader
+    classpath resource [31m[FAIL][m
+       Cannot open <nil> as a Reader.
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+
+clojure -A:dynapath -i src/cptest/test.clj
+Testing dynapath
+    add-classpath [31m[FAIL][m
+       Could not find a suitable classloader to modify from clojure.lang.LazySeq@4bc0a308
+    classpath resource [31m[FAIL][m
+       Cannot open <nil> as a Reader.
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+
+==== leiningen / no extra classloader / Java java version "1.8.0_91" ===================================
+lein with-profile +pomegranate run -m cptest.test
+Testing pomegranate
+    add-classpath [31m[FAIL][m
+       Could not find a suitable classloader to modify from clojure.lang.LazySeq@4bad7628
+    classpath resource [31m[FAIL][m
+       Cannot open <nil> as a Reader.
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+
+lein with-profile +pomegranate-old run -m cptest.test
+Testing pomegranate
+    add-classpath [32m[OK][m
+    classpath resource [32m[OK][m
+    classpath source file [32m[OK][m
+
+lein with-profile +add-lib run -m cptest.test
+Testing add-lib
+    add-classpath [31m[FAIL][m
+       Context classloader is not a DynamicClassLoader
+    classpath resource [31m[FAIL][m
+       Cannot open <nil> as a Reader.
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+
+lein with-profile +dynapath run -m cptest.test
+Testing dynapath
+    add-classpath [31m[FAIL][m
+       Could not find a suitable classloader to modify from clojure.lang.LazySeq@647a9446
+    classpath resource [31m[FAIL][m
+       Cannot open <nil> as a Reader.
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+
+==== clj / extra classloader / Java java version "1.8.0_91" ===================================
+clojure -A:pomegranate -i src/cptest/test.clj
+Testing pomegranate
+    install dynamic classloader [32m[OK][m
+    add-classpath [32m[OK][m
+    classpath resource [32m[OK][m
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+
+clojure -A:pomegranate-old -i src/cptest/test.clj
+Testing pomegranate
+    install dynamic classloader [32m[OK][m
+    add-classpath [32m[OK][m
+    classpath resource [32m[OK][m
+    classpath source file [32m[OK][m
+
+clojure -A:add-lib -i src/cptest/test.clj
+Testing add-lib
+    install dynamic classloader [32m[OK][m
+    add-classpath [32m[OK][m
+    classpath resource [32m[OK][m
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+
+clojure -A:dynapath -i src/cptest/test.clj
+Testing dynapath
+    install dynamic classloader [32m[OK][m
+    add-classpath [32m[OK][m
+    classpath resource [32m[OK][m
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+
+==== leiningen / no extra classloader / Java java version "1.8.0_91" ===================================
+lein with-profile +pomegranate run -m cptest.test
+Testing pomegranate
+    install dynamic classloader [32m[OK][m
+    add-classpath [32m[OK][m
+    classpath resource [32m[OK][m
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+
+lein with-profile +pomegranate-old run -m cptest.test
+Testing pomegranate
+    install dynamic classloader [32m[OK][m
+    add-classpath [32m[OK][m
+    classpath resource [32m[OK][m
+    classpath source file [32m[OK][m
+
+lein with-profile +add-lib run -m cptest.test
+Testing add-lib
+    install dynamic classloader [32m[OK][m
+    add-classpath [32m[OK][m
+    classpath resource [32m[OK][m
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+
+lein with-profile +dynapath run -m cptest.test
+Testing dynapath
+    install dynamic classloader [32m[OK][m
+    add-classpath [32m[OK][m
+    classpath resource [32m[OK][m
+    classpath source file [31m[FAIL][m
+       Could not locate cptest/dynamic__init.class or cptest/dynamic.clj on classpath.
+

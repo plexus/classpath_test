@@ -1,13 +1,22 @@
-{:deps {}
+{:deps {org.clojure/clojure {:mvn/version "1.10.0-alpha6"}}
  :paths ["src"]
 
  :aliases
  {:pomegranate
   {:extra-paths ["pomegranate-src"]
-   :extra-deps {com.cemerick/pomegranate {:mvn/version "1.0.0"}}}
+   :extra-deps {com.cemerick/pomegranate {:mvn/version "1.0.0"}
+                org.tcrawley/dynapath {:mvn/version "1.0.0"}}}
+
+  :pomegranate-old
+  {:extra-paths ["pomegranate-src"]
+   :extra-deps {com.cemerick/pomegranate {:mvn/version "0.4.0"}}}
 
   :add-lib
   {:extra-paths ["add-lib-src"]
    :extra-deps {org.clojure/tools.deps.alpha
                 {:git/url "https://github.com/clojure/tools.deps.alpha.git"
-                 :sha "d492e97259c013ba401c5238842cd3445839d020"}}}}}
+                 :sha "d492e97259c013ba401c5238842cd3445839d020"}}}
+
+  :dynapath
+  {:extra-paths ["dynapath-src"]
+   :extra-deps {org.tcrawley/dynapath {:mvn/version "1.0.0"}}}}}

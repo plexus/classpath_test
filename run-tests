@@ -1,0 +1,35 @@
+#!/bin/bash
+
+do_it() {
+echo "$@"
+"$@"
+echo
+}
+
+PROFILES="pomegranate pomegranate-old add-lib dynapath"
+
+echo "==== clj / no extra classloader / Java $(java -version 2>&1 | head -1) ==================================="
+
+for x in $PROFILES; do
+  do_it clojure -A:$x -i src/cptest/test.clj
+done
+
+echo "==== leiningen / no extra classloader / Java $(java -version 2>&1 | head -1) ==================================="
+
+for x in $PROFILES ; do
+  do_it lein with-profile +$x run -m cptest.test
+done
+
+export ADD_CLASSLOADER=true
+
+echo "==== clj / extra classloader / Java $(java -version 2>&1 | head -1) ==================================="
+
+for x in $PROFILES; do
+  do_it clojure -A:$x -i src/cptest/test.clj
+done
+
+echo "==== leiningen / no extra classloader / Java $(java -version 2>&1 | head -1) ==================================="
+
+for x in $PROFILES ; do
+  do_it lein with-profile +$x run -m cptest.test
+done
