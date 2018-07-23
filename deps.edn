@@ -1,0 +1,13 @@
+{:deps {}
+ :paths ["src"]
+
+ :aliases
+ {:pomegranate
+  {:extra-paths ["pomegranate-src"]
+   :extra-deps {com.cemerick/pomegranate {:mvn/version "1.0.0"}}}
+
+  :add-lib
+  {:extra-paths ["add-lib-src"]
+   :extra-deps {org.clojure/tools.deps.alpha
+                {:git/url "https://github.com/clojure/tools.deps.alpha.git"
+                 :sha "d492e97259c013ba401c5238842cd3445839d020"}}}}}
